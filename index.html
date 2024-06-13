@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Cool Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Search box -->
+      <div class="search-container">
+        <i class="fa-solid fa-location-dot"></i>
+        <input
+          type="text"
+          class="city-input"
+          placeholder="Enter location name"
+        />
+        <button class="fa-solid fa-magnifying-glass get-weather-btn"></button>
+      </div>
+      <!-- /Search box -->
+
+      <!-- Weather -->
+      <div class="content-container">
+        <div class="weather-container"></div>
+        <div class="map-container">
+          <div class="map"></div>
+        </div>
+      </div>
+      <!-- /Weather -->
+
+      <!-- Forecast table -->
+      <div class="forecast-table hidden">
+        <table>
+          <thead>
+            <tr class="forecast-header"></tr>
+          </thead>
+          <tbody class="forecast-body">
+            <tr class="desc-row"></tr>
+            <tr class="temp-row"></tr>
+            <tr class="humidity-row"></tr>
+            <tr class="wind-row"></tr>
+          </tbody>
+        </table>
+        <!-- /Forecast table -->
+      </div>
+      <!-- Footer -->
+    </div>
+    <footer class="footer">
+      <p>
+        Made with &hearts; by
+        <a class="link" href="https://acn-dev.netlify.app/">ACN Dev</a>
+      </p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
