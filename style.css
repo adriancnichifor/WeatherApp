@@ -11,7 +11,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,8 +39,8 @@ img {
 .search-container i {
   padding-right: 1rem;
   padding-left: 1rem;
-  font-size: 1rem;
-  color: #06283d;
+  font-size: 1.5rem;
+  color: #dff6ff;
 }
 
 .city-input {
@@ -78,6 +77,7 @@ img {
 }
 .weather-container {
   background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   color: #fff;
   border-radius: 10px;
   padding: 2rem;
@@ -104,21 +104,31 @@ img {
   height: 50px;
 }
 
+.clock {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
 .map-container {
   margin: 0 auto;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 .map img {
   border-radius: 10px;
   max-height: 300px;
+  height: 100%;
 }
 
 .forecast-table {
   text-align: center;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 1rem 0;
+  width: 100%;
 }
 
 .forecast-table table {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   margin: 0 auto;
   overflow-x: auto;
   border-collapse: collapse;
@@ -126,8 +136,9 @@ img {
   border-radius: 10px;
   overflow: hidden;
   padding: 2rem;
-  max-width: 100%;
+  width: 100%;
 }
+
 .forecast-table th,
 .forecast-table td {
   border: 1px solid #999;
@@ -178,8 +189,9 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
     margin: 0;
+    padding: 0 10px;
   }
 
   .map-container {

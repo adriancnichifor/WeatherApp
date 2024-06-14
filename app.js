@@ -22,7 +22,7 @@ async function getWeather(city = null) {
   const urlMap = `https://maps.googleapis.com/maps/api/staticmap?center=${cityName}&zoom=10&size=450x400&key=${mapsApiKey}`;
 
   try {
-    // Obține vremea curentă
+    // Current weather
     const responseCurrent = await fetch(urlCurrent);
     const dataCurrent = await responseCurrent.json();
 
@@ -49,9 +49,37 @@ async function getWeather(city = null) {
                 <p class"wind">Wind Speed: ${Math.round(
                   dataCurrent.wind.speed
                 )} m/s</p>
+                <div id="MyClockDisplay" class="clock"></div>
             `;
       document.querySelector(".weather-container").innerHTML = weather;
+      // Clock
 
+      function showTime() {
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+
+        if (h == 0) {
+          h = 12;
+        }
+
+        if (h > 12) {
+          h = h - 12;
+        }
+
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+
+        var time = h + ":" + m + ":" + s;
+        document.getElementById("MyClockDisplay").innerText = time;
+        document.getElementById("MyClockDisplay").textContent = time;
+
+        setTimeout(showTime, 1000);
+      }
+
+      showTime();
       //change background
       const weatherDescription = dataCurrent.weather[0].main.toLowerCase();
       changeBackground(weatherDescription);
@@ -60,9 +88,8 @@ async function getWeather(city = null) {
         ".weather-container"
       ).innerHTML = `<h2>Please check the location name</h2>`;
     }
-    console.log(dataCurrent);
 
-    // Forecast
+    // Forecast weather
     const responseForecast = await fetch(urlForecast);
     const dataForecast = await responseForecast.json();
 
@@ -98,7 +125,6 @@ async function getWeather(city = null) {
 
       let dayCount = 0;
       const maxDays = window.innerWidth < 768 ? 3 : 5;
-      console.log(window.innerWidth);
 
       for (const [date, values] of Object.entries(days)) {
         if (dayCount >= maxDays) break;
@@ -109,13 +135,10 @@ async function getWeather(city = null) {
         windRow.innerHTML += `<td>${values.wind} m/s</td>`;
         dayCount++;
       }
-
-      document.querySelector(".forecast-table").classList.remove("hidden");
     } else {
       document.querySelector(
         ".weather-container"
       ).innerHTML = `<p>${dataForecast.message}</p>`;
-      document.querySelector(".forecast-table").classList.add("hidden");
     }
 
     // Map
