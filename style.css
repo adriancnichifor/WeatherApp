@@ -7,7 +7,7 @@
 }
 
 body {
-  background-position: center center;
+  background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -16,13 +16,6 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-}
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  max-width: 600px;
 }
 
 img {
@@ -72,9 +65,6 @@ img {
   background: #06283d;
 }
 
-.content-container {
-  margin-bottom: 1rem;
-}
 .weather-container {
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
@@ -82,9 +72,10 @@ img {
   border-radius: 10px;
   padding: 2rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 .weather-container > * {
-  margin-bottom: 10px;
+  margin: 5px 0;
 }
 .city {
   font-weight: 900;
@@ -94,6 +85,7 @@ img {
 .row {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .description {
   text-transform: capitalize;
@@ -110,21 +102,12 @@ img {
   letter-spacing: 2px;
 }
 
-.map-container {
-  margin: 0 auto;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-}
-.map img {
-  border-radius: 10px;
-  max-height: 300px;
-  height: 100%;
-}
-
 .forecast-table {
   text-align: center;
   border-radius: 10px;
-  padding: 1rem 0;
+  padding: 1rem;
   width: 100%;
+  max-width: 600px;
 }
 
 .forecast-table table {
@@ -161,6 +144,10 @@ img {
 .forecast-table th:last-child {
   border-top-right-radius: 10px;
 }
+th:nth-child(n + 5),
+td:nth-child(n + 5) {
+  display: none;
+}
 
 .footer {
   margin: 1rem auto;
@@ -181,7 +168,7 @@ img {
   .content-container {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 4rem;
   }
 
   .weather-container {
@@ -189,22 +176,17 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     margin: 0;
     padding: 0 10px;
   }
 
-  .map-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .map {
-    height: 300px;
-  }
   .forecast-table table {
     max-width: 100%;
     padding: 0;
+  }
+
+  th:nth-child(n + 5),
+  td:nth-child(n + 5) {
+    display: table-cell;
   }
 }

@@ -14,45 +14,35 @@
     <title>Cool Weather App</title>
   </head>
   <body>
-    <div class="container">
-      <!-- Search box -->
-      <div class="search-container">
-        <i class="fa-solid fa-location-dot"></i>
-        <input
-          type="text"
-          class="city-input"
-          placeholder="Enter location name"
-        />
-        <button class="fa-solid fa-magnifying-glass get-weather-btn"></button>
-      </div>
-      <!-- /Search box -->
-
-      <!-- Weather -->
-      <div class="content-container">
-        <div class="weather-container"></div>
-        <div class="map-container">
-          <div class="map"></div>
-        </div>
-      </div>
-      <!-- /Weather -->
-
-      <!-- Forecast table -->
-      <div class="forecast-table hidden">
-        <table>
-          <thead>
-            <tr class="forecast-header"></tr>
-          </thead>
-          <tbody class="forecast-body">
-            <tr class="desc-row"></tr>
-            <tr class="temp-row"></tr>
-            <tr class="humidity-row"></tr>
-            <tr class="wind-row"></tr>
-          </tbody>
-        </table>
-        <!-- /Forecast table -->
-      </div>
-      <!-- Footer -->
+    <!-- Search box -->
+    <div class="search-container">
+      <i class="fa-solid fa-location-dot"></i>
+      <input type="text" class="city-input" placeholder="Enter location name" />
+      <button class="fa-solid fa-magnifying-glass get-weather-btn"></button>
     </div>
+    <!-- /Search box -->
+
+    <!-- Weather -->
+    <div class="weather-container"></div>
+    <!-- /Weather -->
+
+    <!-- Forecast table -->
+    <div class="forecast-table">
+      <table>
+        <thead>
+          <tr class="forecast-header"></tr>
+        </thead>
+        <tbody class="forecast-body">
+          <tr class="desc-row"></tr>
+          <tr class="temp-row"></tr>
+          <tr class="humidity-row"></tr>
+          <tr class="wind-row"></tr>
+        </tbody>
+      </table>
+      <!-- /Forecast table -->
+    </div>
+    <!-- Footer -->
+
     <footer class="footer">
       <p>
         Made with &hearts; by

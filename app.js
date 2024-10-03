@@ -1,6 +1,3 @@
-// const apiKey = "e4aac7067992715018a24b34af12ae27";
-// const mapsApiKey = "AIzaSyC4nusPCnc9d-L4WYdYm4XEzezrweaqHc0";
-
 document
   .querySelector(".get-weather-btn")
   .addEventListener("click", getWeather);
@@ -16,10 +13,8 @@ async function getWeather(city = null) {
   const cityInput = document.querySelector(".city-input").value;
   const cityName = city || cityInput || "Bucharest";
   const apiKey = "e4aac7067992715018a24b34af12ae27";
-  const mapsApiKey = "AIzaSyC4nusPCnc9d-L4WYdYm4XEzezrweaqHc0";
   const urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
   const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric`;
-  const urlMap = `https://maps.googleapis.com/maps/api/staticmap?center=${cityName}&zoom=10&size=450x400&key=${mapsApiKey}`;
 
   try {
     // Current weather
@@ -31,6 +26,7 @@ async function getWeather(city = null) {
       const icon = dataCurrent.weather[0].icon;
       const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       const weather = `
+      <div id="clock" class=a"clock"></div>
                 <h2 class="city">${dataCurrent.name}, ${
         dataCurrent.sys.country
       }</h2>
@@ -49,37 +45,27 @@ async function getWeather(city = null) {
                 <p class"wind">Wind Speed: ${Math.round(
                   dataCurrent.wind.speed
                 )} m/s</p>
-                <div id="MyClockDisplay" class="clock"></div>
             `;
       document.querySelector(".weather-container").innerHTML = weather;
-      // Clock
 
+      // Clock
       function showTime() {
         var date = new Date();
         var h = date.getHours(); // 0 - 23
         var m = date.getMinutes(); // 0 - 59
         var s = date.getSeconds(); // 0 - 59
 
-        if (h == 0) {
-          h = 12;
-        }
-
-        if (h > 12) {
-          h = h - 12;
-        }
-
-        h = h < 10 ? "0" + h : h;
         m = m < 10 ? "0" + m : m;
         s = s < 10 ? "0" + s : s;
 
         var time = h + ":" + m + ":" + s;
-        document.getElementById("MyClockDisplay").innerText = time;
-        document.getElementById("MyClockDisplay").textContent = time;
+        document.getElementById("clock").innerText = time;
+        document.getElementById("clock").textContent = time;
 
         setTimeout(showTime, 1000);
       }
-
       showTime();
+
       //change background
       const weatherDescription = dataCurrent.weather[0].main.toLowerCase();
       changeBackground(weatherDescription);
@@ -123,34 +109,23 @@ async function getWeather(city = null) {
         }
       });
 
-      let dayCount = 0;
-      const maxDays = window.innerWidth < 768 ? 3 : 5;
-
       for (const [date, values] of Object.entries(days)) {
-        if (dayCount >= maxDays) break;
         forecastHeader.innerHTML += `<th>${date}</th>`;
         descRow.innerHTML += `<td>${values.description}</td>`;
         tempRow.innerHTML += `<td>${values.temp}°C</td>`;
         humidityRow.innerHTML += `<td>${values.humidity}%</td>`;
         windRow.innerHTML += `<td>${values.wind} m/s</td>`;
-        dayCount++;
       }
     } else {
       document.querySelector(
-        ".weather-container"
+        ".weather-result"
       ).innerHTML = `<p>${dataForecast.message}</p>`;
     }
-
-    // Map
-    document.querySelector(
-      ".map"
-    ).innerHTML = `<img src="${urlMap}" alt="Map of ${cityName}">`;
   } catch (error) {
     console.error("Error fetching weather data:", error);
     document.querySelector(
-      ".weather-container"
+      ".weather-result"
     ).innerHTML = `<p>Error fetching weather data</p>`;
-    document.querySelector(".forecast-table").classList.add("hidden");
   }
 }
 
