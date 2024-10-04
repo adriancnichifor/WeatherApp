@@ -153,7 +153,7 @@ function changeBackground(weatherDescription) {
     case "mist":
     case "fog":
     case "haze":
-      imageUrl = "images/fog.jpg";
+      imageUrl = "images/mist.jpg";
       break;
     default:
       imageUrl = "images/other.jpg";
